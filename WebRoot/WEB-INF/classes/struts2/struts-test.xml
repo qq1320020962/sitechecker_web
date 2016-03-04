@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="test-default" extends="struts-default" namespace="">
+		<action name="testAction_*" class="testAction" method="{1}">
+			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
+		</action>
+	</package>
+</struts>

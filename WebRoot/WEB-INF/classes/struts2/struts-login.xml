@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="login-default" extends="struts-default" namespace="">
+	
+		<action name="loginAction_*" class="loginAction" method="{1}">
+			<result name="success">/WEB-INF/webadmin/main.jsp</result>
+			<result name="loginui">/WEB-INF/webadmin/login.jsp</result>
+		</action>
+		
+	</package>
+</struts>

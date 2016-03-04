@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- dynamic-update的作用就是动态地生成sql语句，比如有一个实体类在要进行跟新操作的时候 它又一个属性是没有值得，这个时候生成的sql会自动经对应的属性过滤掉。 -->
+	<class name="com.sitechecker.domain.User" table="user"
+		dynamic-update="true">
+		<id name="uid" type="java.lang.Long">
+			<column name="uid" />
+			<generator class="native" />
+		</id>
+		<property name="username" type="java.lang.String">
+			<column name="username" length="50" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" length="64" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="20" />
+		</property>
+		<property name="sex" type="java.lang.String">
+			<column name="sex" length="10" />
+		</property>
+		<property name="state" type="java.lang.String">
+			<column name="state" length="10" />
+		</property>
+		<property name="post" type="java.lang.String">
+			<column name="post" length="20" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" length="50" />
+		</property>
+		<property name="tel" type="java.lang.String">
+			<column name="tel" length="50" />
+		</property>
+		<property name="lastIP" type="java.lang.String">
+			<column name="lastIP" length="50" />
+		</property>
+		<property name="lastlogin" type="java.lang.String">
+			<column name="lastlogin" length="30"></column>
+		</property>
+		
+		<many-to-one name="terminal" class="com.sitechecker.domain.Terminal" column="tid"></many-to-one>
+
+		<set name="records" inverse="true" cascade="all">
+			<key column="uid"></key>
+			<one-to-many class="com.sitechecker.domain.Record" />
+		</set>
+
+		<set name="imgs" inverse="true" cascade="all">
+			<key column="uid"></key>
+			<one-to-many class="com.sitechecker.domain.Images" />
+		</set>
+
+		<set name="inspects" table="user_inspect">
+			<key>
+				<column name="uid"></column>
+			</key>
+			<many-to-many class="com.sitechecker.domain.Inspect"
+				column="isid"></many-to-many>
+		</set>
+
+	</class>
+</hibernate-mapping>

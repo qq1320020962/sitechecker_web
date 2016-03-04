@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="inspect-default" extends="struts-default" namespace="">
+					  
+		<action name="inspectAction_*" class="inspectAction" method="{1}">
+			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
+			<result name="addInspectUI">/WEB-INF/webadmin/addinspect.jsp</result>
+			<result name="updateByIidUI">/WEB-INF/webadmin/updateinspect.jsp</result>
+			<result name="listInspect">/WEB-INF/webadmin/listinspect.jsp</result>
+			<result name="showInspect">/WEB-INF/webadmin/showinspectmain.jsp</result>
+			<result name="showInspectLeft">/WEB-INF/webadmin/showinspectleft.jsp</result>
+			<result name="showInspectRight">/WEB-INF/webadmin/showinspectright.jsp</result>
+			<result name="action2action" type="redirectAction">inspectAction_listInspect?page=${page}</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="terminal-default" extends="struts-default" namespace="">
+	
+		<action name="terminalAction_*" class="terminalAction" method="{1}">
+			<result name="success">/success.html</result>
+		</action>
+		
+	</package>
+</struts>
