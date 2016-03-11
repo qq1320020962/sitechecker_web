@@ -11,6 +11,10 @@ import java.util.Set;
  */
 public class User implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long uid;//用户的ID
 	private String username;//账号
 	private String password;
@@ -20,20 +24,28 @@ public class User implements Serializable {
 	private String post;//职位
 	private String email;//邮箱
 	private String tel;//电话号码
-	private int finishedNum;//完成任务的数量
+	private int finish_sum;//完成任务的数量
+	public int getFinish_sum() {
+		return finish_sum;
+	}
+
+	public void setFinish_sum(int finish_sum) {
+		this.finish_sum = finish_sum;
+	}
+
 	private Date lastlogin;//上次登录的时间
 	private String lastIP;//上传登录的ip
 	private Set<Inspect> inspects;
 	private Set<Record> records;
-	private Set<Images> imgs;
+	private Set<Image> imgs;
 	
 	private Terminal terminal;//用户所处的员工
 
-	public Set<Images> getImgs() {
+	public Set<Image> getImgs() {
 		return imgs;
 	}
 
-	public void setImgs(Set<Images> imgs) {
+	public void setImgs(Set<Image> imgs) {
 		this.imgs = imgs;
 	}
 
@@ -146,14 +158,6 @@ public class User implements Serializable {
 
 	public void setLastlogin(Date lastlogin) {
 		this.lastlogin = lastlogin;
-	}
-	
-	public int getFinishedNum() {
-		return finishedNum;
-	}
-
-	public void setFinishedNum(int finishedNum) {
-		this.finishedNum = finishedNum;
 	}
 
 }

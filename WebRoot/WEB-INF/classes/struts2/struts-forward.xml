@@ -6,9 +6,9 @@
 	<package name="forward-default" extends="struts-default" namespace="">
 	
 		<action name="forwardAction_*" class="forwardAction" method="{1}">
-			<result name="top">/WEB-INF/webadmin/top.jsp</result>
-			<result name="right">/WEB-INF/webadmin/index.jsp</result>
-			<result name="menu">/WEB-INF/webadmin/left.jsp</result>
+			<result name="top">/WEB-INF/web/top.jsp</result>
+			<result name="right">/WEB-INF/web/welcome.jsp</result>
+			<result name="menu">/WEB-INF/web/left.jsp</result>
 		</action>
 		
 	</package>

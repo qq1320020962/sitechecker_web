@@ -9,7 +9,7 @@ public interface InspectService {
 	
 	public Collection<Inspect> findAllInspect();
 	
-	public Collection<Inspect> findInspect_page(int pageSize, int page);
+	public Collection<Inspect> findInspectsOfPage(int page);
 	
  	public Inspect findInspectByIsid(Serializable Isid);
 	

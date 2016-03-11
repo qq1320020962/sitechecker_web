@@ -12,16 +12,16 @@ import org.springframework.stereotype.Repository;
 
 import com.sitechecker.dao.InspectDao;
 import com.sitechecker.dao.base.impl.BaseDaoImpl;
-import com.sitechecker.domain.Images;
+import com.sitechecker.domain.Image;
 import com.sitechecker.domain.Inspect;
+import com.sitechecker.utils.ConstantUtil;
 
 @Repository("inspectDao")
 public class InspectDaoImpl extends BaseDaoImpl<Inspect> implements
 		InspectDao<Inspect> {
 
 	@Override
-	public Collection<Inspect> findInspect_page(final int pageSize,
-			final int page) {
+	public Collection<Inspect> findInspectsOfPage(final int page) {
 		return this.hibernateTemplate.executeFind(new HibernateCallback() {
 			@Override
 			public Object doInHibernate(Session session)
@@ -29,8 +29,8 @@ public class InspectDaoImpl extends BaseDaoImpl<Inspect> implements
 				StringBuffer hql = new StringBuffer();
 				hql.append("from Inspect");
 				Query query = session.createQuery(hql.toString());
-				query.setFirstResult(page);
-				query.setMaxResults(pageSize);
+				query.setFirstResult(page * ConstantUtil.PAGESIZE);
+				query.setMaxResults(ConstantUtil.PAGESIZE);
 				return query.list();
 			}
 		});

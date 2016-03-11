@@ -5,7 +5,7 @@
 <struts>
 	<package name="test-default" extends="struts-default" namespace="">
 		<action name="testAction_*" class="testAction" method="{1}">
-			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
+			<result name="success">/WEB-INF/web/dosuccess.jsp</result>
 		</action>
 	</package>
 </struts>

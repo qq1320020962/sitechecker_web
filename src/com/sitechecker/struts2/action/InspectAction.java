@@ -8,16 +8,20 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.sitechecker.domain.Images;
+import com.sitechecker.domain.Image;
 import com.sitechecker.domain.Inspect;
 import com.sitechecker.domain.User;
 import com.sitechecker.service.ImageService;
 import com.sitechecker.service.InspectService;
 import com.sitechecker.service.UserService;
 import com.sitechecker.struts2.action.base.BaseAction;
-import com.sitechecker.utils.Constant;
+import com.sitechecker.utils.ConstantUtil;
 import com.sitechecker.utils.SCUtil;
 
+/**
+ * @author fengorz
+ *	处理各种监督任务的业务逻辑
+ */
 @Controller("inspectAction")
 @Scope("prototype")
 public class InspectAction extends BaseAction<Inspect> {
@@ -76,11 +80,11 @@ public class InspectAction extends BaseAction<Inspect> {
 	}
 	
 	public String listInspect(){
-		Collection<Inspect> inspects = this.inspectService.findInspect_page(Constant.PAGESIZE, this.page-1);
+		Collection<Inspect> inspects = this.inspectService.findInspectsOfPage(this.page-1);
 		int entryCount = this.inspectService.findEntryCount();
 		ServletActionContext.getContext().put("inspect_page", inspects);
 		ServletActionContext.getContext().put("entryCount", entryCount);
-		ServletActionContext.getContext().put("navCount", Constant.NAVCOUNT);
+		ServletActionContext.getContext().put("navCount", ConstantUtil.NAVCOUNT);
 		ServletActionContext.getContext().put("pageCount", SCUtil.getPageCount(entryCount));
 		return listInspect;
 	}
@@ -117,7 +121,7 @@ public class InspectAction extends BaseAction<Inspect> {
 	}
 	
 	public String showInspectRight(){
-		Images image = this.imageService.findImgByIid(this.imgID);
+		Image image = this.imageService.findImgByIid(this.imgID);
 		ServletActionContext.getContext().put("image", image);
 		return showInspectRight;
 	}
@@ -128,7 +132,7 @@ public class InspectAction extends BaseAction<Inspect> {
 		int entryCount = inspects.size();
 		ServletActionContext.getContext().put("inspect_page", inspects);
 		ServletActionContext.getContext().put("entryCount", entryCount);
-		ServletActionContext.getContext().put("navCount", Constant.NAVCOUNT);
+		ServletActionContext.getContext().put("navCount", ConstantUtil.NAVCOUNT);
 		ServletActionContext.getContext().put("pageCount", SCUtil.getPageCount(entryCount));
 		return listInspect;
 	}

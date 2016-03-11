@@ -15,4 +15,5 @@ public interface TerminalService {
 	
 	public void deleteTerminalByTid(Serializable tid);
 	
+	
 }

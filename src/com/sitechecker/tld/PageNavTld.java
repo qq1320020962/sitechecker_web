@@ -9,7 +9,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-import com.sitechecker.utils.Constant;
+import com.sitechecker.utils.ConstantUtil;
 
 public class PageNavTld extends SimpleTagSupport {
 
@@ -85,13 +85,13 @@ public class PageNavTld extends SimpleTagSupport {
 		for (int nc = this.navCount; (page = this.currentPage - nc) > 0
 				&& nc > 0; nc--) {
 			sb.append("<li class=\"paginItem\"><a href=\"" + spliceUrl(page)
-					+ "\">4</a></li>");
+					+ "\">"+page+"</a></li>");
 		}
 		sb.append(printCurrentNav());
 		for (int nc = 1; (page = this.currentPage + nc) < this.pageCount
 				&& nc <= this.navCount; nc++) {
 			sb.append("<li class=\"paginItem\"><a href=\"" + spliceUrl(page)
-					+ "\">4</a></li>");
+					+ "\">"+page+"</a></li>");
 		}
 		sb.append("<li class=\"paginItem\"><a href=\""
 				+ spliceUrl(this.pageCount) + "\">>></span></a></li>");

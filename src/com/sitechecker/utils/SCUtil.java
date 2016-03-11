@@ -12,22 +12,22 @@ public class SCUtil {
 
 	public static User getUserFromSession() {
 		return (User) ServletActionContext.getRequest().getSession()
-				.getAttribute(Constant.LOGIN_USER_SESSION);
+				.getAttribute(ConstantUtil.LOGIN_USER_SESSION);
 	}
 
 	public static void putUser2Session(User user) {
 		ServletActionContext.getRequest().getSession()
-				.setAttribute(Constant.LOGIN_USER_SESSION, user);
+				.setAttribute(ConstantUtil.LOGIN_USER_SESSION, user);
 	}
 
 	public static void delUserFromSession() {
 		ServletActionContext.getRequest().getSession()
-				.removeAttribute(Constant.LOGIN_USER_SESSION);
+				.removeAttribute(ConstantUtil.LOGIN_USER_SESSION);
 	}
 
 	public static int getPageCount(int entryCount) {
-		return entryCount % Constant.PAGESIZE == 0 ? entryCount
-				/ Constant.PAGESIZE : (entryCount / Constant.PAGESIZE) + 1;
+		return entryCount % ConstantUtil.PAGESIZE == 0 ? entryCount
+				/ ConstantUtil.PAGESIZE : (entryCount / ConstantUtil.PAGESIZE) + 1;
 	}
 
 	public static void deleteFile(String targetPath) throws IOException {

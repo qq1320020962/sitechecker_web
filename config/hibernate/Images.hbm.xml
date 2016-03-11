@@ -4,28 +4,28 @@
 <hibernate-mapping>
 	<!-- dynamic-update的作用就是动态地生成sql语句，比如有一个实体类在要进行跟新操作的时候
 		它又一个属性是没有值得，这个时候生成的sql会自动经对应的属性过滤掉。 -->
-	<class name="com.sitechecker.domain.Images" table="images" dynamic-update="true">
+	<class name="com.sitechecker.domain.Image" table="images" dynamic-update="true">
 		<id name="iid" type="java.lang.Long">
 			<column name="iid" />
 			<generator class="native" />
 		</id>
-		<property name="name" type="java.lang.String">
-			<column name="name" length="20" />
+		<property name="img_name" type="java.lang.String">
+			<column name="img_name" length="200" />
 		</property>
-		<property name="publishTime" type="java.util.Date" >
-			<column name="publishTime" />
+		<property name="publish_time" type="java.util.Date" >
+			<column name="publish_time" />
 		</property>
 		<property name="longitude" type="java.lang.String">
-			<column name="longitude" length="50" />
+			<column name="longitude" length="200" />
 		</property>
 		<property name="latitude" type="java.lang.String">
-			<column name="latitude" length="30"></column>
+			<column name="latitude" length="200"></column>
 		</property>
 		<property name="remark" type="java.lang.String">
-			<column name="remark" length="30"></column>
+			<column name="remark" length="4000"></column>
 		</property>
 		<property name="url" type="java.lang.String">
-			<column name="url" length="50"></column>
+			<column name="url" length="400"></column>
 		</property>
 		
 		<many-to-one name="inspect" class="com.sitechecker.domain.Inspect" column="isid"></many-to-one>

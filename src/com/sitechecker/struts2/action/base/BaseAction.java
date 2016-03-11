@@ -1,6 +1,12 @@
 package com.sitechecker.struts2.action.base;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.ParameterizedType;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -35,6 +41,16 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void writeJson2Resp(String json) throws IOException{
+		HttpServletResponse resp = ServletActionContext.getResponse();
+		resp.setCharacterEncoding("gbk");
+		resp.setContentType("text/html;charset=gbk");//这一句没加入会导致乱码
+		PrintWriter out = resp.getWriter();
+		out.write(json);
+		out.flush();
+		out.close();
 	}
 	
 	@Override

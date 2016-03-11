@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.sitechecker.dao.base.BaseDao;
-import com.sitechecker.domain.Images;
+import com.sitechecker.domain.Image;
 
 public class BaseDaoImpl<T> implements BaseDao<T> {
 

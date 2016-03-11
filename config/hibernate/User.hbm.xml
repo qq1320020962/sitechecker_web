@@ -10,37 +10,41 @@
 			<generator class="native" />
 		</id>
 		<property name="username" type="java.lang.String">
-			<column name="username" length="50" />
+			<column name="username" length="100" />
 		</property>
 		<property name="password" type="java.lang.String">
-			<column name="password" length="64" />
+			<column name="password" length="100" />
 		</property>
 		<property name="name" type="java.lang.String">
-			<column name="name" length="20" />
+			<column name="name" length="200" />
 		</property>
 		<property name="sex" type="java.lang.String">
-			<column name="sex" length="10" />
+			<column name="sex" length="100" />
 		</property>
 		<property name="state" type="java.lang.String">
-			<column name="state" length="10" />
+			<column name="state" length="200" />
 		</property>
 		<property name="post" type="java.lang.String">
-			<column name="post" length="20" />
+			<column name="post" length="200" />
 		</property>
 		<property name="email" type="java.lang.String">
-			<column name="email" length="50" />
+			<column name="email" length="200" />
 		</property>
 		<property name="tel" type="java.lang.String">
-			<column name="tel" length="50" />
+			<column name="tel" length="200" />
 		</property>
 		<property name="lastIP" type="java.lang.String">
-			<column name="lastIP" length="50" />
+			<column name="lastIP" length="200" />
 		</property>
 		<property name="lastlogin" type="java.lang.String">
-			<column name="lastlogin" length="30"></column>
+			<column name="lastlogin" length="200"></column>
 		</property>
-		
-		<many-to-one name="terminal" class="com.sitechecker.domain.Terminal" column="tid"></many-to-one>
+		<property name="finish_sum" type="java.lang.Integer">
+			<column name="finish_sum" length="200"></column>
+		</property>
+
+		<many-to-one name="terminal" class="com.sitechecker.domain.Terminal"
+			column="tid"></many-to-one>
 
 		<set name="records" inverse="true" cascade="all">
 			<key column="uid"></key>
@@ -49,7 +53,7 @@
 
 		<set name="imgs" inverse="true" cascade="all">
 			<key column="uid"></key>
-			<one-to-many class="com.sitechecker.domain.Images" />
+			<one-to-many class="com.sitechecker.domain.Image" />
 		</set>
 
 		<set name="inspects" table="user_inspect">

@@ -37,6 +37,7 @@
     
     
     <mapping resource="hibernate/Images.hbm.xml"/>
+    <mapping resource="hibernate/InspectUserRelation.hbm.xml"/>
     <mapping resource="hibernate/Inspect.hbm.xml"/>
     <mapping resource="hibernate/Record.hbm.xml"/>
     <mapping resource="hibernate/User.hbm.xml"/>

@@ -1,18 +1,22 @@
 package com.sitechecker.service;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Collection;
 
-import com.sitechecker.domain.Images;
+import com.sitechecker.domain.Image;
+import com.sitechecker.service.result.ImageResult;
 
 public interface ImageService {
 	
-	public void addImage(Images image);
+	public void addImage(Image image);
 	
-	public Collection<Images> findAllImage();
+	public Collection<Image> findAllImage();
 	
-	public Images findImgByIid(Serializable iid);
+	public Image findImgByIid(Serializable iid);
 	
 	public void deleteImageByIid(Serializable iid);
+	
+	public ImageResult validateImage(Image image, File file, String fileContentType);
 	
 }

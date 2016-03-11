@@ -3,5 +3,5 @@ encoding//src/com/sitechecker/dao/base/impl/BaseDaoImpl.java=gb2312
 encoding//src/com/sitechecker/struts2/action/ImageAction.java=UTF-8
 encoding//src/com/sitechecker/struts2/action/LoginAction.java=gbk
 encoding//src/com/sitechecker/struts2/action/TestAction.java=UTF-8
-encoding//src/com/sitechecker/utils/AuthRanImgUtils.java=UTF-8
+encoding//src/com/sitechecker/utils/CaptchaUtil.java=UTF-8
 encoding/<project>=gb2312

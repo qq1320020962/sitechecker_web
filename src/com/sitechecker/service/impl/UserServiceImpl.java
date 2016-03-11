@@ -11,43 +11,44 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sitechecker.dao.UserDao;
 import com.sitechecker.domain.User;
 import com.sitechecker.service.UserService;
+import com.sitechecker.service.result.RegisterResult;
+import com.sitechecker.utils.ConstantUtil;
+import com.sitechecker.utils.ValidateUtil;
 
+/**
+ * @author fengorz
+ *	处理各种User用户的业务逻辑
+ */
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Resource(name="userDao")
 	private UserDao userDao;
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Collection findAllUser() {
-		// TODO Auto-generated method stub
+	public Collection<User> findAllUser() {
 		return this.userDao.getAllEntry();
 	}
 
 	@Override
-	public User findUserByID(Serializable id) {
-		// TODO Auto-generated method stub
-		return (User) this.userDao.getEntryByID(id);
+	public User findUserByID(Serializable uid) {
+		return (User) this.userDao.getEntryByID(uid);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly=false)
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
 		this.userDao.saveEntry(user);
 	}
 
-	@Override
-	@Transactional(readOnly=false)
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		this.userDao.updateEntry(user);
 	}
 
 	@Override
 	@Transactional(readOnly=false)
 	public void deleteUser(Serializable id) {
-		// TODO Auto-generated method stub
 		this.userDao.deleteEntry(id);
 	}
 
@@ -61,11 +62,7 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.findEntryCount();
 	}
 
-	@Override
-	public Collection<User> findUser_page(int pageSize, int page) {
-		return this.userDao.findUser_page(pageSize, page);
-	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<User> findUserOfTerminal(Long tid) {
 		return this.userDao.findUserOfTerminal(tid);
@@ -75,4 +72,11 @@ public class UserServiceImpl implements UserService {
 	public User findUserByUsername(String username) {
 		return this.userDao.findUserByUsername(username);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<User> findUsersOfPage(int page) {
+		return this.userDao.findUsersOfpage(page);
+	}
+
 }

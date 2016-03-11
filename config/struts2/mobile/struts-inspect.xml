@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="mobile-inspect-default" extends="struts-default">
+
+		<action name="mInspectAction_*" class="mobileInspectAction"
+			method="{1}" />
+		
+		<action name="showInspectByIsid" class="mobileInspectAction" method="showInspectByIsid" />
+	</package>
+
+</struts>

@@ -52,13 +52,8 @@ public class InspectServiceImpl implements InspectService {
 	@Override
 	public void updateInspect(Inspect inspect, int[] uids) {
 		setInpsectUsers(uids, inspect);
-		inspect.setPublishTime(new Date());
+		inspect.setPublish_time(new Date());
 		this.inspectDao.updateEntry(inspect);
-	}
-
-	@Override
-	public Collection<Inspect> findInspect_page(int pageSize, int page) {
-		return this.inspectDao.findInspect_page(pageSize, page);
 	}
 
 	@Override
@@ -74,6 +69,11 @@ public class InspectServiceImpl implements InspectService {
 			users.add(user);
 		}
 		inspect.setUsers(users);
+	}
+
+	@Override
+	public Collection<Inspect> findInspectsOfPage(int page) {
+		return this.inspectDao.findInspectsOfPage(page);
 	}
 
 }

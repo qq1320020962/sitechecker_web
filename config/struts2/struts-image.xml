@@ -6,10 +6,11 @@
 	<package name="image-default" extends="struts-default" namespace="">
 	
 		<action name="imageAction_*" class="imageAction" method="{1}">
-			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
-			<result name="addImgUI">WEB-INF/webadmin/addpicture.jsp</result>
-			<result name="imgList">WEB-INF/webadmin/imglist.jsp</result>
+			<result name="success">/WEB-INF/web/dosuccess.jsp</result>
+			<result name="addImgUI">WEB-INF/web/image/addimg.jsp</result>
+			<result name="imgList">WEB-INF/web/image/listimg.jsp</result>
 			<result name="action2action" type="redirectAction">imageAction_imgList</result>
 		</action>
+		
 	</package>
 </struts>

@@ -3,18 +3,21 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-	<package name="inspect-default" extends="struts-default" namespace="">
-					  
+	<package name="inspect-default" extends="struts-default"
+		namespace="">
+
 		<action name="inspectAction_*" class="inspectAction" method="{1}">
-			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
-			<result name="addInspectUI">/WEB-INF/webadmin/addinspect.jsp</result>
-			<result name="updateByIidUI">/WEB-INF/webadmin/updateinspect.jsp</result>
-			<result name="listInspect">/WEB-INF/webadmin/listinspect.jsp</result>
-			<result name="showInspect">/WEB-INF/webadmin/showinspectmain.jsp</result>
-			<result name="showInspectLeft">/WEB-INF/webadmin/showinspectleft.jsp</result>
-			<result name="showInspectRight">/WEB-INF/webadmin/showinspectright.jsp</result>
-			<result name="action2action" type="redirectAction">inspectAction_listInspect?page=${page}</result>
+			<result name="success">/WEB-INF/web/dosuccess.jsp</result>
+			<result name="addInspectUI">/WEB-INF/web/inspect/addinspect.jsp</result>
+			<result name="updateByIidUI">/WEB-INF/web/inspect/updateinspect.jsp</result>
+			<result name="listInspect">/WEB-INF/web/inspect/listinspect.jsp</result>
+			<result name="showInspect">/WEB-INF/web/inspect/showinspectmain.jsp</result>
+			<result name="showInspectLeft">/WEB-INF/web/inspect/showinspectleft.jsp</result>
+			<result name="showInspectRight">/WEB-INF/web/inspect/showinspectright.jsp</result>
+			<result name="action2action" type="redirectAction">inspectAction_listInspect?page=${page}
+			</result>
 		</action>
-		
+
 	</package>
+
 </struts>

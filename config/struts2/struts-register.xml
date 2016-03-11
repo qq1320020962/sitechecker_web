@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+
+	<package name="register-default" extends="json-default">
+
+		<action name="registerUI" class="registerAction" method="registerUI">
+			<result name="registerUI">/WEB-INF/web/register/register.jsp</result>
+		</action>
+		<action name="registerSuccess" class="registerAction" method="registerSuccess">
+			<result name="success">/WEB-INF/web/dosuccess.jsp</result>
+		</action>
+		<action name="checkUserIsExist" class="registerAction" method="checkUserIsExist">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>

@@ -15,6 +15,7 @@ import com.sitechecker.dao.UserDao;
 import com.sitechecker.dao.base.impl.BaseDaoImpl;
 import com.sitechecker.domain.Inspect;
 import com.sitechecker.domain.User;
+import com.sitechecker.utils.ConstantUtil;
 
 @Repository("userDao")
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao<User> {
@@ -54,22 +55,6 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao<User> {
 	}
 
 	@Override
-	public Collection<User> findUserList(final int first, final int pageSize) {
-		// TODO Auto-generated method stub
-		return this.hibernateTemplate.executeFind(new HibernateCallback() {
-			@Override
-			public Object doInHibernate(Session session)
-					throws HibernateException, SQLException {
-				String hql = "from User";
-				Query query = session.createQuery(hql);
-				query.setFirstResult(first);
-				query.setMaxResults(pageSize);
-				return query.list();
-			}
-		});
-	}
-
-	@Override
 	public User findUserByUAndP(String username, String password) {
 
 		List<User> userList = this.hibernateTemplate.find(
@@ -80,23 +65,6 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao<User> {
 		} else {
 			return null;
 		}
-
-	}
-
-	@Override
-	public Collection<User> findUser_page(final int pageSize, final int page) {
-		return this.hibernateTemplate.executeFind(new HibernateCallback() {
-			@Override
-			public Object doInHibernate(Session session)
-					throws HibernateException, SQLException {
-				StringBuffer hql = new StringBuffer();
-				hql.append("from User");
-				Query query = session.createQuery(hql.toString());
-				query.setFirstResult(page);
-				query.setMaxResults(pageSize);
-				return query.list();
-			}
-		});
 
 	}
 
@@ -117,12 +85,29 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao<User> {
 
 	@Override
 	public User findUserByUsername(String username) {
-		List<User> users = this.hibernateTemplate.find("from User as user where user.username = ?", username);
+		List<User> users = this.hibernateTemplate.find(
+				"from User as user where user.username = ?", username);
 		if (users.size() > 0) {
 			return users.get(0);
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public Collection<User> findUsersOfpage(final int page) {
+		return this.hibernateTemplate.executeFind(new HibernateCallback() {
+			@Override
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				StringBuffer hql = new StringBuffer();
+				hql.append("from User");
+				Query query = session.createQuery(hql.toString());
+				query.setFirstResult(page * ConstantUtil.PAGESIZE);
+				query.setMaxResults(ConstantUtil.PAGESIZE);
+				return query.list();
+			}
+		});
 	}
 
 }

@@ -3,17 +3,25 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-	<package name="user-default" extends="struts-default" namespace="">
-	
+	<package name="user-default" extends="struts-default"
+		namespace="">
+
 		<action name="userAction_*" class="userAction" method="{1}">
-			<result name="userList">/WEB-INF/webadmin/listuser.jsp</result>
-			<result name="addUserUI">/WEB-INF/webadmin/adduser.jsp</result>
-			<result name="action2action" type="redirectAction">userAction_userList</result>
-			<result name="updateUser">/WEB-INF/webadmin/updateuser.jsp</result>
-			<result name="success">/WEB-INF/webadmin/dosuccess.jsp</result>
+			<result name="userList">/WEB-INF/web/user/listuser.jsp</result>
+			<result name="addUserUI">/WEB-INF/web/user/adduser.jsp</result>
+			<result name="action2action" type="redirectAction">userAction_listUser</result>
+			<result name="updateUser">/WEB-INF/web/user/updateuser.jsp</result>
+			<result name="success">/WEB-INF/web/dosuccess.jsp</result>
 		</action>
-		
+
 		<action name="userJsonAction_*" class="userAction" method="{1}" />
-		
+
+	</package>
+
+	<package name="user-json" extends="json-default">
+		<action name="userJson_*" class="userAction" method="{1}">
+			<result type="json">
+			</result>
+		</action>
 	</package>
 </struts>

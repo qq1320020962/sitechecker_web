@@ -1,10 +1,14 @@
 package com.sitechecker.struts2.action;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionChainResult;
+import com.opensymphony.xwork2.ActionContext;
 import com.sitechecker.domain.Terminal;
 import com.sitechecker.service.TerminalService;
 import com.sitechecker.struts2.action.base.BaseAction;
@@ -18,7 +22,26 @@ public class TerminalAction extends BaseAction<Terminal> {
 	
 	
 	public String findAllTerminal(){
-		return null;
+		Collection<Terminal> terminals = this.terminalService.findAllTerminal();
+		ActionContext.getContext().put("allTerminal", terminals);
+		return "listTerminal";
+	}
+	
+	public String addUI(){
+		return "addUI";
+	}
+	
+	public String addTerminal(){
+		return SUCCESS;
+	}
+	
+	public void addTerminal2Json(){
+		Terminal terminal = this.getModel();
+		
+	}
+	
+	public void findAllTerminal2Json(){
+		
 	}
 	
 	
